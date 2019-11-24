@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset='utf-8' />
+</head>
+<body>
+	<a href="{{ url_for('.test_view_invoice') }}"> View Invoice </a>
+	<form method="post" action="/post_user">
+		<label>Username: </label>
+		<input id='username' name='username' type='text' />
+		<label>Email: </label>
+		<input type="text" name="email" id='email'>
+		<input type="submit" />
+	</form>
+
+	<table>
+		<thead>
+		<tr>
+			<th> ID </th>
+			<th> Username </th>
+			<th> Email </th>
+		</tr>
+		</thead>
+		<tbody>
+			{% for user in myUser %}
+			<tr> 
+				<td> {{ user.id }} </td>
+				<td> {{ user.username }}</td>
+				<td> {{ user.email }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,253 @@
+{% extends 'layout.html' %}
+{% block body %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div id="mainbody" class="main_container" style="margin-top:65px;">
+      
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+  href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/start/jquery-ui.css" />
+<style>
+  .form-group label {
+    font-weight: 800;
+    color: black;
+  }
+</style>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/invoices/">Invoices</a></li>
+    <li class="breadcrumb-item active">Create</li>
+  </ol>
+</nav>
+
+
+      
+<div class="crm_invoice" style="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="crm_form">
+          <div class="row">
+            <div class="col-md-9 p-5 m-auto" style=" background: #fff!important;">
+              <!--<div class="jumbotron text-center">-->
+              	<h1 class="text-center pb-3">Create Invoice</h1>
+              <form id="formid" action='/invoice' method="POST" novalidate>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-4 col-form-label">Invoice
+                        Title<span class="error_marker" style="color:red">
+                          *</span> </label>
+                      <div class="col-sm-8 pl-0">
+                        <!-- <input type="text" class="form-control" id="staticEmail" placeholder="micropyramid"> -->
+                        <input type="text" name="invoice_title" required id="id_invoice_title" class="form-control">
+                        <span class="error" id="id__invoice_title"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="staticEmail"
+                        class="col-sm-4 col-form-label">Status</label>
+                      <div class="col-sm-8 pl-0">
+                        <!-- <input type="text" class="form-control" id="staticEmail" placeholder="Lakshmanchandu"> -->
+                        <select name="status" id="id_status" class="form-control">
+  							<option value="Draft" selected>Draft</option>
+
+  							<option value="Sent">Sent</option>
+
+ 							<option value="Paid">Paid</option>
+
+  							<option value="Pending">Pending</option>
+
+  							<option value="Cancelled">Cancel</option>
+
+						</select>
+                        <span class="error" id="id__status"></span>
+                        <!-- <span class="error" id="id__name"></span> -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12" style="margin: 0; padding: 0;">
+
+                    <div class="form-group row" style="padding:0; margin:0;">
+                      <label for="inputPassword" class="col-sm-3 col-form-label" style="">Invoice
+                        Number<span class="error_marker" style="color:red">
+                          *</span></label>
+                      <div class="col-sm-9 pl-0">
+                        <!-- <input type="text" class="form-control" id="inputPassword" placeholder="79840PM90"> -->
+                        <input type="text" name="invoice_number" required id="id_invoice_number" class="form-control">
+                        <span class="error" id="id__invoice_number"></span>
+                      </div>
+                    </div>
+                  </div>
+                
+              <div class="col-md-12">
+                    <div class="row">
+                      <div class="form-group mt-5 col-md-6">
+                        <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-4 col-form-label">Name
+                        </label>
+                      <div class="col-sm-8 pl-0">
+                        <!-- <input type="text" class="form-control" id="staticEmail" placeholder="Lakshmanchandu"> -->
+                        <input type="text" name="name" id="id_name" class="form-control">
+                        <span class="error" id="id__name"></span>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-4 col-form-label">Email
+                        <span class="error_marker" style="color:red"> *
+                        </span></label>
+                      <div class="col-sm-8 pl-0">
+                        <!-- <input type="text" class="form-control" id="staticEmail"
+                                placeholder="lakshman@micropyramid.com"> -->
+                        <input type="email" name="email" required id="id_email" class="form-control">
+                        <span class="error" id="id__email"></span>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="staticEmail"
+                        class="col-sm-4 col-form-label">Phone</label>
+                      <div class="col-sm-8 pl-0">
+                        <input type="tel" name="phone" id="id_phone" class="form-control" placeholder="">
+                        <span class="error" id="id__phone"></span>
+                        <!-- <input type="text" class="form-control" id="staticEmail" placeholder="6566589125"> -->
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-4 col-form-label">Due Date
+                        <span class="error_marker"
+                          style="color:red">*</span></label>
+                      <div class="col-sm-8 pl-0">
+                        <div id="datepicker1" class='input-group date'>
+                          <input type="text" name="due_date" required id="id_due_date" class="form-control">
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                        </div>
+                        <span class="error" id="id__due_date"></span>
+                      </div>
+                    </div>
+                    <br>
+                  </div>
+                  
+               
+                    <div class="form-group mt-5 col-md-6">
+                        <!-- <label for="exampleFormControlTextarea1">From Address</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                          placeholder="Micropyramid Informatics, 6th Floor, Krish saphire Building, Madhapur"
+                          rows="6"></textarea> -->
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Address</label>
+                          <input type="text" name="address_line" id="id_from-address_line" class="form-control" placeholder="Address Line">
+                          <span class="error" id="id__address_line"></span>
+                        </div>
+                        <input type="text" name="street" id="id_from-street" class="form-control" placeholder="Street">
+                        <span class="error" id="id__street"></span>
+                        <div class="row" style="margin-top: 10px;">
+                          <div class="col-md-4">
+                            <input type="text" name="city" id="id_from-city" class="form-control" placeholder="City">
+                            
+                            <span class="error" id="id__city"></span>
+                          </div>
+                          <div class="col-md-4">
+                            <input type="text" name="state" id="id_from-state" class="form-control" placeholder="State">
+                            <span class="error" id="id__state"></span>
+                          </div>
+                          <div class="col-md-4">
+                            <input type="text" name="postcode" id="id_from-postcode" class="form-control" placeholder="Postcode">
+                            <span class="error" id="id__postcode"></span>
+                          </div>
+                          <div class="col-md-12" style="margin-top: 10px;">
+                            <select name="country" id="id_from-country" class="form-control">
+  <option value="" selected>--Country--</option>
+
+  <option value="GB">United Kingdom</option>
+
+  <option value="AF">Afghanistan</option>
+
+  <option value="AX">Aland Islands</option>
+
+  <option value="AL">Albania</option>
+
+  <option value="DZ">Algeria</option>
+
+
+</select>
+                            <span class="error" id="id__country"></span>
+                          </div>
+                        </div>
+                        <br>
+                      </div>
+                      </div>
+                       
+                       
+                   
+                  
+                   
+                   
+                  <div class="col-md-12 mt-5">
+                    <div class="row pt-0 pb-4">
+            
+                       <div class="form-group col-md-4">
+                        <label for="inputZip">Total Amount<span
+                            class="error_marker" style="color:red"> * </span></label>
+                        <input type="number" name="total_amount" required id="id_total_amount" class="form-control">
+                        <span class="error" id="id__total_amount"></span>
+                        <!-- <input type="text" class="form-control" id="inputZip" placeholder="5:31"> -->
+                      </div>
+                    </div>
+                  </div>
+                  
+              
+
+                <div class="col-md-12">
+                  <div class="col-md-12">
+                    <div class="row marl buttons_row form_btn_row text-center">
+                      <button class="btn btn-default save" type="submit">Save</button>
+                      <a href="/invoices/" class="btn btn-default clear"
+                        id="create_user_cancel">Cancel</a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+  
+
+  <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
+  
+
+
+  
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+  <script src="https://malsup.github.io/jquery.form.js"></script>
+  <script type="text/javascript">
+  </script>
+</body>
+{% endblock %}

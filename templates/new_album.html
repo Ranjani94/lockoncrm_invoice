@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block body %}
+<doctype html>
+<title>New Invoice - Database</title>
+<center><h2>New Invoice</h2></center>
+<br>
+<br>
+<center>
+
+		{% from "_formhelpers.html" import render_field %}
+		<form method=post>
+    		<dl>
+        	{{ render_field(form.artist) }}
+        	{{ render_field(form.title) }}
+        	{{ render_field(form.release_date) }}
+        	{{ render_field(form.publisher) }}
+        	{{ render_field(form.media_type) }}
+   			</dl>
+    	<input type=submit value=Submit>
+		</form>
+
+</center>
+{% endblock %}
